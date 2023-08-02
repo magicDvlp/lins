@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru" class="html-hidden">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <script>
+      let externalVar = {
+        nonce: 'sadfsdf',
+        ajaxUrl: '',
+        baseUrl: '',
+      };
+    </script>
+    <style>
+      html.html-hidden {
+        width: 100%;
+        overflow: hidden
+      }
+
+      .preload {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #fff linear-gradient(52deg, rgba(254, 122, 121, .67) 0, rgba(128, 75, 150, .28) 100%);
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+
+      body {
+        overflow: hidden
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1
+        }
+
+        to {
+          opacity: 0;
+          visibility: hidden
+        }
+      }
+
+      .preload_hide {
+        animation: fadeOut 1s 1s cubic-bezier(0, 0, .2, 1) forwards
+      }
+
+      @keyframes spin {
+        0% {
+          transform: translateY(0)
+        }
+
+        50% {
+          transform: translateY(-20px)
+        }
+
+        100% {
+          transform: translateY(0)
+        }
+      }
+
+      .preload-img {
+        height: auto;
+        animation: spin 2s infinite linear
+      }
+    </style>
+    <style>
+      @charset "UTF-8";:root{--mm-lineheight:22px}:root{--mm-blocker-visibility-delay:0.4s;--mm-blocker-opacity-delay:0s}:root{--mm-listitem-size:50px}:root{--mm-navbar-size:50px}:root{--mm-toggle-size:34px}:root{--mm-size:80%;--mm-min-size:240px;--mm-max-size:440px}:root{--mm-iconbar-size:50px}:root{--mm-iconpanel-size:50px}:root{--mm-sectionindexer-size:20px}:root{--mm-sidebar-collapsed-size:50px;--mm-sidebar-expanded-size:var(--mm-max-size)}:root{--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-black:#000;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#0d6efd;--bs-secondary:#6c757d;--bs-success:#198754;--bs-info:#0dcaf0;--bs-warning:#ffc107;--bs-danger:#dc3545;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-primary-rgb:13,110,253;--bs-secondary-rgb:108,117,125;--bs-success-rgb:25,135,84;--bs-info-rgb:13,202,240;--bs-warning-rgb:255,193,7;--bs-danger-rgb:220,53,69;--bs-light-rgb:248,249,250;--bs-dark-rgb:33,37,41;--bs-primary-text-emphasis:#052c65;--bs-secondary-text-emphasis:#2b2f32;--bs-success-text-emphasis:#0a3622;--bs-info-text-emphasis:#055160;--bs-warning-text-emphasis:#664d03;--bs-danger-text-emphasis:#58151c;--bs-light-text-emphasis:#495057;--bs-dark-text-emphasis:#495057;--bs-primary-bg-subtle:#cfe2ff;--bs-secondary-bg-subtle:#e2e3e5;--bs-success-bg-subtle:#d1e7dd;--bs-info-bg-subtle:#cff4fc;--bs-warning-bg-subtle:#fff3cd;--bs-danger-bg-subtle:#f8d7da;--bs-light-bg-subtle:#fcfcfd;--bs-dark-bg-subtle:#ced4da;--bs-primary-border-subtle:#9ec5fe;--bs-secondary-border-subtle:#c4c8cb;--bs-success-border-subtle:#a3cfbb;--bs-info-border-subtle:#9eeaf9;--bs-warning-border-subtle:#ffe69c;--bs-danger-border-subtle:#f1aeb5;--bs-light-border-subtle:#e9ecef;--bs-dark-border-subtle:#adb5bd;--bs-white-rgb:255,255,255;--bs-black-rgb:0,0,0;--bs-font-sans-serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--bs-gradient:linear-gradient(180deg,hsla(0,0%,100%,.15),hsla(0,0%,100%,0));--bs-body-font-family:var(--bs-font-sans-serif);--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-color-rgb:33,37,41;--bs-body-bg:#fff;--bs-body-bg-rgb:255,255,255;--bs-emphasis-color:#000;--bs-emphasis-color-rgb:0,0,0;--bs-secondary-color:rgba(33,37,41,.75);--bs-secondary-color-rgb:33,37,41;--bs-secondary-bg:#e9ecef;--bs-secondary-bg-rgb:233,236,239;--bs-tertiary-color:rgba(33,37,41,.5);--bs-tertiary-color-rgb:33,37,41;--bs-tertiary-bg:#f8f9fa;--bs-tertiary-bg-rgb:248,249,250;--bs-heading-color:inherit;--bs-link-color:#0d6efd;--bs-link-color-rgb:13,110,253;--bs-link-decoration:underline;--bs-link-hover-color:#0a58ca;--bs-link-hover-color-rgb:10,88,202;--bs-code-color:#d63384;--bs-highlight-bg:#fff3cd;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#dee2e6;--bs-border-color-translucent:rgba(0,0,0,.175);--bs-border-radius:0.375rem;--bs-border-radius-sm:0.25rem;--bs-border-radius-lg:0.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-xxl:2rem;--bs-border-radius-2xl:var(--bs-border-radius-xxl);--bs-border-radius-pill:50rem;--bs-box-shadow:0 0.5rem 1rem rgba(0,0,0,.15);--bs-box-shadow-sm:0 0.125rem 0.25rem rgba(0,0,0,.075);--bs-box-shadow-lg:0 1rem 3rem rgba(0,0,0,.175);--bs-box-shadow-inset:inset 0 1px 2px rgba(0,0,0,.075);--bs-focus-ring-width:0.25rem;--bs-focus-ring-opacity:0.25;--bs-focus-ring-color:rgba(13,110,253,.25);--bs-form-valid-color:#198754;--bs-form-valid-border-color:#198754;--bs-form-invalid-color:#dc3545;--bs-form-invalid-border-color:#dc3545}*,:after,:before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{background-color:var(--bs-body-bg);color:var(--bs-body-color);font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);margin:0;text-align:var(--bs-body-text-align)}h3{color:var(--bs-heading-color);font-weight:500;line-height:1.2;margin-bottom:.5rem;margin-top:0}h3{font-size:calc(1.3rem + .6vw)}p{margin-bottom:1rem;margin-top:0}a{color:rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));text-decoration:underline}img,svg{vertical-align:middle}button{border-radius:0}button{font-family:inherit;font-size:inherit;line-height:inherit;margin:0}button{text-transform:none}button{-webkit-appearance:button}::-moz-focus-inner{border-style:none;padding:0}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{-webkit-appearance:button;font:inherit}.container{--bs-gutter-x:2rem;--bs-gutter-y:0;margin-left:auto;margin-right:auto;padding-left:calc(var(--bs-gutter-x)*.5);padding-right:calc(var(--bs-gutter-x)*.5);width:100%}:root{--bs-breakpoint-xs:0;--bs-breakpoint-sm:576px;--bs-breakpoint-md:768px;--bs-breakpoint-lg:992px;--bs-breakpoint-xl:1200px;--bs-breakpoint-xxl:1400px}.row{--bs-gutter-x:2rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-left:calc(var(--bs-gutter-x)*-.5);margin-right:calc(var(--bs-gutter-x)*-.5);margin-top:calc(var(--bs-gutter-y)*-1)}.row>*{box-sizing:border-box;flex-shrink:0;margin-top:var(--bs-gutter-y);max-width:100%;padding-left:calc(var(--bs-gutter-x)*.5);padding-right:calc(var(--bs-gutter-x)*.5);width:100%}.col-auto{flex:0 0 auto;width:auto}.d-block{display:block!important}.d-flex{display:flex!important}.d-none{display:none!important}.flex-column{flex-direction:column!important}.flex-grow-1{flex-grow:1!important}.justify-content-between{justify-content:space-between!important}.align-items-end{align-items:flex-end!important}:root{--fontFamily:"AmaticSC";--fontSize:2.4rem;--bodyBackground:#f4f4f4;--textColor:#000;--primary:#fe7a79;--primaryLight:#fcadad;--primaryDarken:#ec7272;--secondary:#7910ff;--secondaryLight:#984cfc;--secondaryDarken:#7810ffbb;--headerHeight:80px;--headerBg:#e1d0dd;--headerBeforeBlendMode:none;--headerBeforeOpacity:1;--bodyNoiseOpacity:0.3;--btnColor:var(--primary);--btnColorHover:var(--primaryDarken);--btnColorText:#fff}@media (max-width:1399.98px){:root{--headerHeight:60px}}@media (max-width:767.98px){:root{--headerHeight:50px}}@media (max-width:575.98px){:root{--headerHeight:40px}}*{box-sizing:border-box;margin:0;outline:0!important;padding:0}a{color:var(--textColor);text-decoration:none}html{font-size:62.5%;scroll-behavior:auto!important}h3{font-size:1.9rem;margin-bottom:1em}body{-webkit-text-size-adjust:100%;background:var(--bodyBackground);color:var(--textColor);display:flex;flex-direction:column;font-family:var(--fontFamily);font-size:var(--fontSize);line-height:1.33;min-height:100vh;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:none;position:relative}img{display:block}.page{background:inherit;box-shadow:-1px 0 7px rgba(0,0,0,.3)}.submit-modal__content{flex-direction:column;flex-wrap:wrap;justify-content:center;width:100%}.submit-modal__content p{color:var(--textColor);font-size:3.5rem;font-weight:600;text-align:center;text-transform:uppercase;width:100%}.submit-modal__content p:last-child{margin-bottom:0}.submit-modal__close-btn{background:0 0;border:none;color:#fff;display:flex;position:absolute;right:1rem;top:1rem;z-index:20}.submit-modal__close-btn:before{content:"✕";font-size:2.3rem;font-weight:600;line-height:1}.submit-modal__container{background:0 0;width:100%}@media (max-width:575.98px){.submit-modal__content p{font-size:3rem}}.icon{font-size:10px}.icon-deviantart,.icon-facebook,.icon-feed,.icon-first-page,.icon-hamburger,.icon-instagram,.icon-last-page,.icon-message,.icon-next-page,.icon-prev-page,.icon-topIcon,.icon-tumblr,.icon-twitter{height:2.4em;width:2.4em}.nav-menu{--lineHeight:0.6rem;display:flex;height:100%;position:relative;width:100%}.nav-menu__line{background:#000;height:var(--lineHeight);left:0;position:absolute;top:0;width:1px;z-index:2}.nav-menu__item{align-items:center;display:flex;flex-grow:1;font-size:3.2rem;height:100%;justify-content:center;line-height:.8;padding:.5rem;text-align:center;text-transform:uppercase}.nav-menu__item_active{font-weight:700}@media (max-width:1399.98px){.nav-menu__line{--lineHeight:0.4rem}}@media (max-width:767.98px){.nav-menu__line{--lineHeight:0.3rem}}@media (max-width:575.98px){.nav-menu__item{font-size:3rem}}.header{backface-visibility:hidden;background:var(--headerBg);display:flex;height:var(--headerHeight);left:0;position:fixed;top:0;width:100%;z-index:1000}.header>*{position:relative;z-index:2}.header:before{background:url(img/noise.png) 0 0 repeat;content:"";display:block;height:100%;left:0;mix-blend-mode:var(--headerBeforeBlendMode);opacity:var(--headerBeforeOpacity);position:absolute;top:0;width:100%;z-index:1}.hero-section{--heightSize:clamp(0px,100vh,1200px);height:var(--heightSize);position:relative;z-index:3}.hero-section-image{display:flex;justify-content:center;left:50%;overflow:hidden;position:absolute;top:5rem;transform:translateX(-50%);width:100%;z-index:3}.hero-section-image__img{height:auto;max-width:100%;min-width:160rem}@media (orientation:portrait){.hero-section{--heightSize:clamp(0px,50vh,800px)}}@media (max-width:991.98px){.hero-section-image__img{min-width:120rem}}@media (max-width:767.98px){.hero-section-image__img{min-width:100rem}}@media (max-width:575.98px) and (orientation:portrait){.hero-section{--heightSize:clamp(0px,38vh,600px)}}@media (max-width:575.98px){.hero-section-image{top:20px}.hero-section-image__img{min-width:60rem}}.content-substrate{--radius:1.6rem;background:#fff;border-radius:var(--radius);padding:4rem}@media (max-width:1199.98px){.content-substrate{padding:2rem}}.main{display:flex;flex-direction:column;min-height:100vh;overflow:hidden;position:relative;z-index:6}.main>*{position:relative;z-index:2}.chapter-header{position:relative;z-index:2}.chapter-header__title{font-size:3.2rem;font-weight:700;line-height:1.25;margin-bottom:2.4rem;text-align:center}@media (max-width:767.98px){.chapter-header__title{font-size:2.8rem;margin-bottom:1.5rem}}@media (max-width:575.98px){.chapter-header__title{font-size:2.4rem;margin-bottom:1.5rem}}.comic-nav{align-items:center;display:flex;justify-content:center}.comic-nav__btn{margin-right:1.6rem}.comic-nav__btn:last-child{margin-right:0}.square-btn{align-items:center;background:#fff;border-radius:.8rem;display:flex;height:4rem;justify-content:center;position:relative;width:4rem}.square-btn_darken{background:#f4f4f4}.square-btn>*{position:relative;z-index:2}.square-btn:before{background:hsla(0,99%,74%,.5);border-radius:80%;box-shadow:1px 1px 3px hsla(0,99%,74%,.5);content:"";display:block;height:100%;left:0;opacity:0;position:absolute;top:0;transform:scale(0);width:100%;z-index:1}.square-btn_disabled{opacity:.5}.widget{--paddingSize:16%;padding-left:var(--paddingSize);padding-right:var(--paddingSize)}.widget__title{font-weight:700;margin-bottom:4rem;text-align:center}@media (max-width:1199.98px){.widget{--paddingSize:10%}.widget__title{margin-bottom:2rem}}.social-networks-column__item{display:flex;justify-content:center;margin-top:4rem}.social-networks-column__item:nth-child(-n+2){margin-top:0}@media (max-width:1199.98px){.social-networks-column__item{margin-top:2rem}}.chapter-content{margin-top:-2rem}.chapter-content__img{height:auto;margin-left:auto;margin-right:auto;max-width:100%;width:100%}.theme-select{display:flex;flex-direction:column}.theme-select__color{border:1px solid #d3d3d3;border-radius:1.6rem;margin-bottom:4rem;padding:2px;width:100%}.theme-select__color:last-child{margin-bottom:0}.theme-select__color:before{background:currentColor;border-radius:1.6rem;content:"";display:block;padding-top:41%;width:100%}@media (max-width:1199.98px){.theme-select__color{margin-bottom:2rem}}.theme-select-row{margin-left:auto;margin-right:auto;margin-top:2.4rem;max-width:30rem}.theme-select-row__title{font-size:2.2rem;margin-bottom:0}.theme-select-row__color{border:1px solid #d3d3d3;border-radius:.4rem;display:flex;padding:2px;width:33.33%}.theme-select-row__color:last-child{margin-bottom:0}.theme-select-row__color:before{background:currentColor;border-radius:.4rem;content:"";display:block;padding-top:26%;width:100%}.theme-select-row__color-list{align-items:center;-moz-column-gap:1rem;column-gap:1rem;display:flex}@media (max-width:767.98px){.theme-select-row{margin-top:1.5rem}}.comic{margin-bottom:4rem}.body-noise{background:url(img/noise-1.png) 0 0 repeat;height:100%;left:0;mix-blend-mode:soft-light;opacity:var(--bodyNoiseOpacity);position:fixed;top:0;width:100%;z-index:4}.characters-overlay{display:flex;justify-content:center;left:50%;overflow:hidden;position:absolute;top:calc(450px + clamp(0px,100vh,1200px));transform:translateX(-50%);width:100%;z-index:4}.characters-overlay__inner{display:flex;justify-content:space-between;min-width:1290px;width:100%}.comic-nav-floating{align-items:center;display:flex;height:100vh;height:100lvh;justify-content:center;left:0;position:fixed;top:0;width:100%;z-index:10}.comic-nav-floating>*{flex-grow:1}.comic-nav-floating__container{visibility:hidden}.comic-nav-floating__btn{margin-top:1.6rem}.comic-nav-floating__btn:nth-child(-n+1){margin-top:0}@media (max-width:991.98px){.comic-nav-floating__btn{box-shadow:0 0 5px rgba(0,0,0,.3)}.comic-nav-floating__container{max-width:100%!important}}.modal__overlay{align-items:center;background:hsla(0,0%,100%,.5) linear-gradient(52deg,hsla(0,99%,74%,.67),rgba(128,75,150,.28));bottom:0;display:flex;justify-content:center;left:0;position:fixed;right:0;top:0;z-index:9000}.modal__container{background-color:#fff;border-radius:1.6rem;box-sizing:border-box;max-height:100vh;max-width:95%;overflow-y:auto;padding:4rem 3rem;width:500px}@keyframes mmfadeOut{0%{opacity:1}to{opacity:0}}@keyframes mmslideOut{0%{transform:translateY(0)}to{transform:translateY(-10%)}}.micromodal-slide{display:none}.micromodal-slide[aria-hidden=true] .modal__overlay{animation:mmfadeOut .3s cubic-bezier(0,0,.2,1)}.micromodal-slide[aria-hidden=true] .modal__container{animation:mmslideOut .3s cubic-bezier(0,0,.2,1)}.micromodal-slide .modal__container,.micromodal-slide .modal__overlay{will-change:transform}@media (max-width:1199.98px){html{font-size:53%}}
+    </style>
+    <link href="./css/style.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="./css/style.css" rel="stylesheet"></noscript>
+    <script>!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var t,o=loadCSS.relpreload={};o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},o.support()||(o.poly(),t=n.setInterval(o.poly,500),n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})),"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);</script>
+  </head>
+
+  <body data-barba="wrapper">
+    <header class="header mm-slideout">
+      <div class="container header__container">
+        <nav class="nav-menu">
+          <a href="https://magicdvlp.github.io/" class="nav-menu__item nav-menu__item_active">Home</a>
+          <a href="https://magicdvlp.github.io/about.html" class="nav-menu__item">About</a>
+          <span class="nav-menu__line"></span>
+        </nav>
+      </div>
+    </header>
+    <div class="preload mm-slideout">
+      <svg width="260" class="preload-img" height="248" viewBox="0 0 260 248" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.5021 94.2189C20.951 94.8496 24.2762 94.5797 27.5711 94.7865C30.9947 95.0035 34.4183 95.3946 37.842 95.165C40.8871 94.9606 43.8011 94.1079 46.4754 92.5487C46.8463 92.3342 46.9749 92.1778 46.8286 91.7943C45.6983 88.8577 46.4855 86.0395 47.149 83.1306C48.1557 78.7256 51.0495 75.3751 53.1284 71.5731C53.9231 70.1174 54.7355 68.6591 55.8456 67.3775C56.4485 66.6837 57.0919 66.3431 57.8816 66.6307C58.6485 66.9107 59.0875 67.7332 59.1026 68.4623C59.1556 71.0054 59.476 73.5712 58.7848 76.0891C58.6763 76.4852 58.6536 76.9293 58.6914 77.3405C58.9412 80.035 57.7125 82.3914 57.0591 84.8866C56.7387 86.1127 56.0625 87.3489 56.4687 88.8173C58.207 87.5659 59.9024 86.307 61.0983 84.6494C61.835 83.6302 62.0242 82.1795 62.327 80.8928C62.8593 78.6171 63.543 76.3767 64.0602 74.1061C64.5269 72.0499 65.0139 69.9937 65.5513 67.9603C66.3334 64.9958 67.0953 62.0263 68.0666 59.0997C69.868 53.6729 72.5524 48.723 75.4966 43.8815C77.4519 40.6672 79.831 37.8491 83.2067 35.9923C84.7659 35.1345 86.2064 35.1269 87.7328 36.0881C88.3106 36.4514 88.4266 37.0115 88.1844 37.3067C87.8716 37.6877 87.2005 37.7684 86.7918 37.2184C86.0122 36.1714 85.2805 36.5524 84.6498 37.3143C83.2445 39.0147 82.5104 41.0684 81.8822 43.1296C81.0622 45.8216 80.3457 48.5489 79.7023 51.2888C79.1423 53.678 78.7007 56.0949 78.2819 58.5144C77.7773 61.4082 76.97 64.2238 76.1778 67.0444C75.3326 70.0593 74.5354 73.0894 73.6902 76.1043C73.1276 78.115 72.507 80.1082 71.9343 82.1164C71.8258 82.4999 71.5886 83.0019 71.9065 83.2769C72.1235 83.4636 72.6432 83.4157 72.9888 83.3224C74.3815 82.9464 75.7464 82.4772 77.1441 82.1189C77.7117 81.9726 77.853 81.7607 77.8127 81.1804C77.3333 74.3761 80.8957 69.5295 85.5707 65.2153C87.8539 63.1112 90.5711 61.7463 93.4624 60.8128C96.1417 59.95 98.9775 60.0988 101.775 60.1543C103.728 60.1922 105.666 60.3133 107.455 61.1711C109.574 62.1878 110.452 63.9564 110.469 66.2649C110.485 68.48 109.261 69.7692 107.462 70.7834C105.482 71.9011 103.274 72.113 101.122 72.388C97.6075 72.8371 94.1007 73.3215 90.6039 73.8891C89.4408 74.0784 88.3106 74.4593 87.1702 74.7696C87.0314 74.8075 86.9154 74.9488 86.8044 75.0547C85.2326 76.5811 84.4707 81.4125 85.278 83.4107C86.325 86.0017 90.0034 86.7788 92.0243 86.3928C93.8408 86.0471 95.6725 85.7545 97.4461 85.1893C99.6562 84.4879 101.826 83.726 103.398 81.907C103.854 81.3772 104.452 81.3242 104.843 81.6244C105.459 82.0962 104.765 82.5327 104.48 82.8052C102.303 84.8967 99.6839 86.1329 96.8052 87.0411C93.866 87.9671 90.9016 87.9973 87.9195 87.8813C84.9172 87.7677 82.0234 87.1017 79.7276 84.9648C79.3113 84.5762 78.9581 84.6368 78.6124 84.7554C76.029 85.6334 73.4631 86.5668 70.8822 87.4524C70.2792 87.6593 70.2464 88.2572 70.148 88.6331C69.1817 92.3721 67.9859 96.0404 66.9414 99.7542C66.1113 102.711 64.8373 105.481 63.5783 108.239C62.0444 111.592 60.576 114.993 58.6359 118.151C56.5999 121.466 54.3974 124.648 51.6676 127.448C49.3894 129.787 46.7378 131.505 43.6977 132.719C39.0176 134.586 34.2644 132.244 32.7961 127.315C32.3445 125.798 31.85 124.315 31.792 122.715C31.7491 121.517 32.2133 120.727 33.0812 120.634C33.6817 120.571 33.8608 120.858 33.7069 121.373C32.8415 124.257 34.1333 126.553 35.7353 128.745C36.1617 129.33 36.694 129.845 37.2238 130.345C38.9218 131.949 40.3497 132.022 42.358 130.753C45.6252 128.687 47.6713 125.586 49.5282 122.337C51.2614 119.304 52.591 116.085 53.6481 112.755C54.6724 109.533 55.8859 106.364 56.7311 103.1C57.2559 101.066 57.7832 99.02 58.2045 96.9512C58.3912 96.0303 58.6939 95.1296 58.974 94.229C59.0472 93.9893 59.2036 93.7446 59.0572 93.5301C58.8806 93.2728 58.5981 93.4418 58.366 93.4948C55.1846 94.2138 51.9905 94.2517 48.8142 93.5251C48.3525 93.4191 48.2011 93.6663 47.9614 93.8026C44.944 95.5358 41.7702 96.6207 38.2305 96.5778C32.8087 96.5147 27.3844 96.5576 21.9601 96.5324C20.3657 96.5248 18.7737 96.439 17.1792 96.4012C16.5888 96.3861 16.2281 96.5147 15.8395 97.1606C14.5099 99.3581 13.145 101.571 10.8164 102.933C9.86019 103.493 8.78542 103.599 7.75354 103.7C5.67465 103.902 3.5781 103.882 1.53201 103.344C0.770086 103.142 0.141878 102.867 0.0308691 101.853C-0.266836 99.1386 1.61274 96.1691 4.63269 95.2255C5.2508 95.0338 5.8008 94.562 6.52236 94.6881C6.75951 94.7285 6.81249 94.5141 6.90584 94.3047C8.37671 91.0501 9.91822 87.8233 11.3538 84.551C13.1072 80.5522 14.7925 76.5231 16.4778 72.494C19.0083 66.4364 21.7381 60.4823 24.9397 54.7351C27.2558 50.5798 29.317 46.2858 31.4918 42.0523C31.6255 41.795 31.7314 41.5124 31.9156 41.2955C32.3495 40.7833 32.9046 40.8867 33.394 41.1693C33.9037 41.4645 33.7397 41.7874 33.3739 42.1507C33.1922 42.3299 33.1392 42.6805 33.1089 42.9631C32.9096 44.9613 32.5665 46.9418 32.2966 48.9248C31.9383 51.5537 31.7087 54.2078 31.0906 56.8115C30.7071 58.4236 30.47 60.0812 30.1647 61.7185C29.7156 64.1279 28.9234 66.4238 28.1514 68.7222C27.0766 71.9137 25.7521 75.0194 24.6647 78.2059C22.9138 83.335 20.6079 88.2093 18.0925 92.9902C17.9108 93.3737 17.8225 93.7698 17.5021 94.2189ZM88.7521 72.0752C89.1583 72.0953 89.3298 72.1382 89.4862 72.1054C91.83 71.5983 94.1991 71.1795 96.5101 70.5463C99.5729 69.7061 100.953 68.3967 99.9968 64.8167C99.6612 63.5552 99.3837 63.3584 98.2534 63.9463C94.527 65.8839 91.4592 68.596 88.7521 72.0752Z" fill="#050505" />
+        <path d="M231.02 153.75C231.219 153.533 231.504 153.344 231.62 153.076C233.253 149.302 235.823 146.166 238.505 143.139C241.107 140.204 244.142 137.727 248.034 136.778C249.922 136.319 251.905 135.817 253.946 136.4C254.998 136.7 256.146 136.531 257.152 137.195C259.779 138.925 260.071 141.549 259.988 144.324C259.862 148.459 258.495 152.292 256.617 155.874C254.312 160.279 251.322 164.243 247.543 167.543C244.24 170.427 240.592 172.738 236.437 174.214C235.869 174.415 235.438 174.849 235.367 175.488C235.051 178.344 234.332 181.131 233.871 183.965C233.172 188.264 232.793 192.593 232.279 196.907C231.958 199.604 232.276 202.372 232.105 205.094C231.926 207.925 231.799 210.776 231.207 213.566C231.048 214.313 230.5 214.855 229.809 215.017C226.176 215.867 222.518 215.864 218.895 214.999C218.206 214.835 217.621 214.207 217.565 213.294C217.363 209.918 217.916 206.595 218.307 203.273C218.506 201.577 218.7 199.864 218.877 198.174C219.276 194.341 219.843 190.522 219.937 186.657C219.972 185.16 220.413 183.68 220.363 182.163C220.35 181.795 220.451 181.242 220.257 181.099C219.838 180.783 219.518 181.351 219.208 181.548C216.46 183.306 212.335 182.625 210.508 180.052C209.976 179.302 209.699 178.437 209.464 177.559C209.396 177.304 209.565 176.913 209.139 176.868C208.833 176.835 208.647 177.062 208.432 177.286C207.504 178.26 206.522 179.186 205.579 180.147C203.517 182.254 200.899 183.051 198.07 183.23C196.229 183.347 194.349 183.435 192.53 183.208C190.111 182.908 187.482 182.824 186.162 180.11C185.897 179.567 185.557 179.464 185.183 180.226C183.813 183.013 182.136 185.546 179.651 187.56C177.143 189.593 174.252 190.264 171.209 190.514C168.63 190.726 166.027 190.59 163.489 190.055C161.183 189.568 159.28 188.294 158.218 186.175C157.694 185.128 157.338 185.516 156.985 186.036C155.284 188.541 153.097 190.585 150.877 192.596C147.889 195.3 144.473 197.364 140.881 199.153C138.042 200.565 135.063 201.665 131.967 202.256C128.359 202.945 124.666 203.295 121.109 201.915C116.381 200.081 113.767 196.398 114.171 191.364C114.271 190.11 114.763 188.872 115.195 187.668C115.546 186.689 116.484 186.281 117.407 186.064C118.603 185.784 120.152 186.805 119.484 188.665C119.194 189.472 118.828 190.272 118.669 191.107C118.121 193.988 119.587 195.772 122.161 197.324C123.452 198.103 124.908 198.736 126.432 198.656C127.693 198.59 128.985 198.247 130.171 197.788C133.098 196.655 135.875 195.174 138.36 193.259C141.986 190.466 144.988 187.103 147.261 183.089C148.727 180.501 149.655 177.826 149.64 174.814C149.628 172.543 148.157 171.305 146.038 171.358C144.299 171.4 142.543 171.648 140.843 172.026C138.224 172.609 135.583 172.922 132.913 173.005C130.605 173.078 128.279 173.151 125.993 172.826C123.407 172.458 121.752 171.86 121.151 168.943C120.851 167.485 121.404 166.042 121.987 164.715C124.179 159.722 127.898 155.925 132.013 152.534C135.063 150.021 138.585 148.328 142.468 147.337C145.013 146.686 147.561 146.499 150.127 146.676C152.638 146.85 154.906 147.7 156.044 150.248C156.326 150.884 156.636 151.558 156.687 152.234C156.843 154.282 156.843 156.344 156.349 158.359C156.081 159.449 155.261 159.881 153.927 159.687C152.867 159.533 152.12 159.003 152.234 157.82C152.443 155.647 151.866 153.745 150.385 152.151C149.418 151.111 148.573 151.086 147.264 151.782C143.802 153.621 141.403 156.571 139.079 159.586C137.55 161.571 136.334 163.746 135.298 166.039C134.818 167.101 135.212 167.031 136.014 166.947C138.426 166.693 140.818 166.302 143.245 166.158C146.82 165.946 150.337 166.221 153.869 166.801C156.495 167.233 158.809 168.025 160.469 170.242C160.827 170.722 161.049 170.326 161.385 169.97C163.002 168.257 164.021 166.12 165.474 164.321C168.28 160.852 171.867 159.139 176.525 159.553C179.267 159.795 181.689 160.284 183.72 162.252C184.853 163.35 185.59 164.659 186.253 166.039C186.367 166.274 186.22 166.708 186.662 166.665C186.957 166.637 187.111 166.357 187.252 166.075C188.206 164.167 189.379 162.411 190.721 160.741C193.305 157.519 196.264 154.686 200.243 153.515C202.385 152.885 204.933 152.537 206.981 154.356C207.246 154.593 207.438 154.815 207.695 154.282C208.192 153.251 209.121 152.895 210.226 152.827C211.989 152.718 213.748 152.668 215.514 152.799C218.208 152.998 219.192 154.093 218.446 156.674C218.044 158.057 217.908 159.477 217.747 160.832C217.197 165.446 216.558 170.078 216.828 174.753C216.861 175.321 216.707 176.128 217.212 176.381C217.775 176.661 218.166 175.904 218.62 175.576C219.657 174.829 220.53 173.888 221.276 172.889C221.975 171.953 222.066 170.702 222.116 169.546C222.321 164.997 223.471 160.59 224.046 156.096C224.594 151.823 225.452 147.589 226.161 143.335C226.221 142.965 226.201 142.581 226.211 142.203C226.246 140.878 227.029 140.139 228.388 140.146C229.647 140.154 230.321 140.886 230.371 142.243C230.505 145.934 230.657 149.623 230.8 153.311C230.81 153.473 230.798 153.647 231.02 153.75ZM222.767 175.533C223.254 175.967 223.065 176.459 222.982 176.873C222.318 180.188 221.945 183.548 221.73 186.909C221.493 190.633 221.12 194.346 220.683 198.043C220.502 199.576 220.482 201.126 220.239 202.647C219.742 205.748 219.417 208.861 219.24 211.997C219.17 213.273 219.833 213.627 220.85 213.7C223.156 213.864 225.467 213.874 227.775 213.707C228.739 213.637 229.562 213.311 229.678 212.138C229.887 209.979 230.273 207.824 230.318 205.662C230.414 200.967 230.455 196.287 231.121 191.609C231.608 188.198 231.996 184.774 232.534 181.366C233.119 177.647 234.057 174.014 234.829 170.343C235.69 166.254 237.181 162.366 238.586 158.465C239.883 154.873 241.553 151.401 243.612 148.164C245.597 145.046 247.934 142.215 251.052 140.101C251.927 139.508 252.235 139.861 252.556 140.583C253.413 142.505 253.648 144.536 253.37 146.587C253.042 148.992 252.553 151.361 251.728 153.674C250.131 158.142 247.674 162.063 244.563 165.603C242.913 167.48 240.945 168.989 238.881 170.379C238.692 170.505 238.233 170.591 238.452 171.004C238.662 171.395 238.947 171.1 239.207 171.027C240.128 170.765 240.869 170.169 241.677 169.695C245.9 167.202 249.228 163.723 252.086 159.828C254.13 157.04 255.704 153.959 256.872 150.657C257.965 147.566 258.394 144.456 257.967 141.234C257.773 139.771 256.38 138.436 255.111 138.345C253.509 138.232 251.98 137.946 250.28 138.174C247.391 138.56 245.045 139.771 242.903 141.491C238.473 145.054 235.319 149.65 232.73 154.653C231.661 156.722 230.689 158.841 229.531 161.236C229.266 155.35 229.06 149.792 228.303 144.261C227.352 146.502 227.135 148.896 226.703 151.235C226.307 153.369 226.186 155.562 225.694 157.671C225.146 160.025 224.912 162.419 224.48 164.785C224.006 167.371 223.875 170.02 223.504 172.629C223.418 173.235 223.116 173.971 222.661 174.34C220.451 176.139 218.584 178.381 215.794 179.661C215.113 176.794 214.775 173.845 215.035 170.929C215.38 167.021 215.491 163.085 216.203 159.202C216.42 158.024 216.778 156.851 216.806 155.63C216.816 155.198 216.907 154.848 216.288 154.704C214.126 154.207 211.979 154.187 209.832 154.737C209.371 154.855 209.141 155.168 208.975 155.667C208.23 157.91 207.468 160.151 206.474 162.3C205.228 164.992 203.664 167.52 202.024 169.97C200.548 172.175 198.928 174.322 196.796 176.285C196.683 174.945 196.529 173.769 196.567 172.558C196.675 169.12 197.356 165.802 198.588 162.6C199.584 160.009 200.765 157.517 202.92 155.642C203.066 155.516 203.351 155.496 203.247 155.226C203.142 154.953 202.856 154.948 202.604 154.943C201.365 154.918 200.233 155.309 199.14 155.847C196.441 157.174 194.362 159.24 192.454 161.498C189.011 165.575 186.611 170.076 186.717 175.606C186.783 179.022 187.769 180.367 191.016 181.154C193.58 181.775 196.201 181.522 198.777 181.366C199.645 181.313 200.636 181.129 201.537 180.743C203.886 179.739 205.561 177.973 207.135 176.07C208.132 174.867 209.098 173.638 210.271 172.18C210.294 174.155 210.96 175.654 211.238 177.226C211.778 180.274 215.824 181.913 218.322 180.052C220.03 178.775 221.541 177.312 222.767 175.533ZM159.969 175.475C159.969 175.238 159.957 174.998 159.972 174.761C160.176 171.229 157.557 169.256 154.961 168.787C152.549 168.35 150.122 167.858 147.645 167.881C145.755 167.899 143.833 167.717 141.983 168.005C139.317 168.421 136.599 168.507 133.968 169.175C133.067 169.405 132.704 168.852 132.881 168.025C133.077 167.096 133.241 166.125 133.653 165.285C136.468 159.51 140.149 154.404 145.513 150.715C146.537 150.011 147.741 149.1 149 149.348C150.241 149.592 151.381 150.405 152.206 151.515C153.225 152.887 153.818 154.451 154.313 156.2C155.211 154.948 155.017 153.639 154.896 152.448C154.719 150.71 153.662 149.345 152.009 148.828C148.47 147.723 144.882 148.275 141.499 149.403C138.141 150.521 135.015 152.211 132.3 154.633C128.296 158.208 124.598 161.932 123.061 167.298C122.585 168.961 123.034 170.094 124.626 170.692C125.98 171.199 127.423 171.115 128.814 171.327C131.465 171.733 134.142 171.183 136.789 170.878C138.06 170.732 139.347 170.53 140.621 170.313C142.647 169.965 144.668 169.458 146.777 169.609C148.159 169.708 149.169 170.331 150.087 171.272C152.138 173.376 151.535 176.01 151.086 178.331C150.322 182.284 148.119 185.66 145.551 188.73C141.035 194.127 135.502 198.055 128.713 200.104C128.387 200.202 127.979 200.185 128.029 200.641C128.087 201.143 128.546 200.999 128.836 200.962C131.564 200.586 134.253 199.988 136.816 198.991C140.52 197.548 143.999 195.661 147.211 193.292C150.541 190.835 153.458 187.984 155.882 184.616C157.022 183.031 157.946 181.328 158.942 179.623C158.955 180.808 158.869 181.954 159.028 183.112C159.376 185.637 161.266 187.744 163.615 188.251C166.153 188.799 168.754 188.932 171.335 188.725C174.163 188.498 176.87 187.84 179.015 185.748C184.091 180.801 186.435 174.917 184.903 167.853C184.293 165.035 182.731 162.674 179.744 161.844C177.693 161.273 175.563 161.152 173.404 161.44C172.17 161.604 171.075 161.985 170.058 162.621C169.854 162.749 169.261 162.817 169.483 163.267C169.718 163.741 170.124 163.456 170.454 163.282C170.566 163.224 170.677 163.168 170.785 163.11C166.37 166.488 162.633 170.452 159.969 175.475ZM237.173 169.228C238.404 168.711 239.383 167.949 240.287 167.169C246.511 161.798 250.358 155.07 251.562 146.905C251.731 145.755 251.662 144.557 251.582 143.388C251.529 142.637 251.292 142.114 250.356 142.864C248.562 144.299 247.179 146.083 245.918 147.945C243.788 151.088 242.133 154.487 240.736 158.029C239.825 160.332 238.97 162.656 238.195 164.997C237.756 166.322 236.997 167.631 237.173 169.228ZM198.618 171.345C201.264 168.063 203.439 164.518 205.248 160.744C205.392 160.443 205.485 160.138 205.147 159.989C204.04 159.497 203.873 158.526 203.762 157.421C200.286 161.453 198.878 166.183 198.618 171.345ZM126.028 200.977C126.447 200.977 126.78 200.989 127.111 200.972C127.376 200.957 127.797 201.08 127.794 200.682C127.792 200.296 127.411 200.349 127.113 200.391C126.785 200.439 126.457 200.485 126.127 200.5C125.64 200.523 124.817 199.957 124.764 200.671C124.721 201.279 125.652 200.805 126.028 200.977Z" fill="#050505" />
+        <path d="M202.314 88.27C202.503 91.5271 200.755 92.8516 198.081 93.6362C197.881 93.6943 197.626 93.6892 197.488 93.8128C195.901 95.2459 193.945 95.3443 191.975 95.3443C191.016 95.3443 190.3 96.0027 189.437 96.2677C188.314 96.6133 187.247 96.6234 186.147 96.631C185.393 96.636 184.916 96.916 184.802 97.6452C184.638 98.7098 183.907 99.6459 184.144 100.801C184.257 101.354 183.808 101.773 183.478 102.048C182.721 102.678 182.421 103.188 183.019 104.167C183.321 104.661 183.332 105.575 183.082 106.117C182.388 107.621 182.426 109.301 181.828 110.772C181.396 111.832 181.681 113.025 180.988 113.976C180.899 114.097 180.841 114.367 180.912 114.455C181.868 115.649 180.594 116.885 180.94 117.967C181.384 119.35 181.028 120.599 180.872 121.903C180.67 123.591 181.505 125.372 180.38 126.992C180.223 127.216 180.423 127.66 180.354 127.983C180.213 128.647 181.351 129.005 180.713 129.795C179.691 131.054 178.669 132.217 177.186 133.057C175.493 134.016 174.027 133.054 172.533 132.86C170.999 132.661 169.688 129.189 170.409 127.718C170.75 127.025 170.904 126.354 170.798 125.667C170.507 123.81 170.765 121.863 171.388 120.296C172.339 117.899 171.905 115.167 173.442 112.974C173.649 112.679 173.588 112.149 173.553 111.738C173.406 109.96 174.062 108.214 173.901 106.483C173.767 105.04 174.41 104.101 175.039 102.999C175.596 102.017 175.45 100.864 175.162 99.8023C174.95 99.0252 174.241 98.8007 173.537 98.9672C172.866 99.1261 172.077 99.3254 171.635 99.7897C170.803 100.665 169.854 100.723 168.792 100.69C167.384 100.647 166.082 100.784 164.707 101.442C163.481 102.03 161.871 101.858 160.459 101.445C159.911 101.283 159.298 100.811 158.879 101.359C158.468 101.896 158.524 102.678 158.925 103.264C159.881 104.656 160.322 106.18 160.489 107.855C160.58 108.774 160.966 109.624 160.867 110.628C160.61 113.217 161.122 115.813 160.966 118.409C160.91 119.327 159.747 119.743 159.828 120.803C160.032 123.488 157.873 125.372 157.371 127.827C157.348 127.938 157.237 128.041 157.149 128.13C155.304 129.921 153.99 132.207 151.999 133.839C150.211 135.307 148.192 136.347 145.73 136.228C144.637 136.175 143.376 136.758 142.468 136.385C141.093 135.817 139.501 136.163 138.386 135.534C136.226 134.318 134.606 132.315 132.85 130.539C132.608 130.294 132.699 129.992 132.621 129.719C132.363 128.811 132.273 127.857 131.359 127.224C130.638 126.724 130.807 125.824 130.968 125.112C131.425 123.129 131.329 121.169 130.615 119.312C130.004 117.73 130.804 116.365 131.029 114.942C131.246 113.57 130.87 112.117 131.624 110.785C131.826 110.429 131.844 109.881 132.061 109.43C132.585 108.337 132.845 107.182 132.686 105.941C132.636 105.547 132.505 105.078 132.782 104.714C134.52 102.436 135.126 99.4718 137.235 97.4156C137.838 96.8277 138.186 95.9195 139.271 96.0154C139.43 96.0305 139.682 95.8337 139.771 95.6722C140.53 94.2594 141.943 94.3149 143.227 94.1333C144.554 93.944 145.793 94.1787 146.772 95.2106C147.044 95.4956 147.392 95.7025 147.783 95.6344C149.413 95.3544 150.856 96.2273 152.421 96.3459C152.504 96.3509 152.627 96.3257 152.663 96.3711C153.692 97.6679 155.314 98.0186 156.629 98.8612C156.964 99.0757 157.136 99.608 157.648 99.4693C158.264 99.3027 157.905 98.778 157.979 98.4121C158.027 98.1674 158.173 97.9076 158.133 97.683C157.734 95.5562 159.258 94.7388 160.716 93.9163C161.216 93.6362 161.829 93.3411 162.366 93.384C163.855 93.5025 165.144 93.1165 166.35 92.2915C166.953 91.8778 167.639 91.8172 168.371 91.8551C169.91 91.9333 171.474 92.0518 172.816 91.0326C173.575 90.4548 174.458 90.523 175.321 90.5986C176.222 90.6769 177.049 90.6138 177.789 90.0108C178.851 89.148 180.029 88.6005 181.457 88.7897C181.803 88.8351 182.095 88.6484 182.373 88.439C184.058 87.17 186.326 87.2734 188.039 86.0473C188.206 85.9262 188.536 85.9993 188.784 86.0296C190.194 86.2062 191.501 85.9817 192.704 85.1769C193.297 84.7808 194.011 85.0608 194.67 84.9574C195.891 84.7682 196.998 84.1854 198.297 84.2131C200.074 84.251 201.045 85.5049 202.175 86.4737C202.498 86.7461 202.281 87.6519 202.314 88.27ZM138.658 119.89C138.153 122.271 140.21 124.108 141.564 126.217C141.903 126.742 142.5 126.914 143.209 126.929C144.842 126.959 146.038 126.253 147.064 125.085C147.39 124.716 147.778 124.176 148.177 124.138C149.423 124.02 149.802 123.086 150.271 122.224C150.723 121.391 150.98 120.427 151.545 119.691C152.332 118.661 152.342 117.521 152.204 116.408C152.095 115.54 152.052 114.771 152.59 114.072C153.183 113.3 153.278 112.586 152.547 111.844C152.151 111.443 152.088 110.941 152.093 110.368C152.1 109.14 150.039 106.811 148.889 106.728C146.964 106.589 145.046 106.715 143.141 107.03C142.781 107.091 142.415 107.283 142.417 107.626C142.425 109.473 140.482 110.305 140.25 112.117C139.93 114.554 138.688 116.827 138.658 119.89Z" fill="white" />
+        <path d="M87.7681 152.057C86.098 152.65 84.9172 151.479 83.7012 150.49C82.6416 149.63 82.2707 147.294 82.9039 145.664C83.3177 144.594 83.6078 143.519 83.4968 142.361C83.3858 141.198 84.4177 140.585 84.8491 139.68C85.114 139.122 85.4597 138.612 85.611 137.989C86.2039 135.539 87.1248 133.221 88.3787 131.028C88.6436 130.564 88.7319 129.971 88.7899 129.477C89.0523 127.242 90.3062 125.349 90.8108 123.157C91.381 120.692 91.5626 118.008 92.92 115.717C93.2934 115.089 93.2328 114.251 93.036 113.618C92.5567 112.079 93.4119 111.105 94.3429 110.245C95.3344 109.329 95.9197 108.123 96.8734 107.187C98.2887 105.799 100.416 105.395 102.26 106.289C102.913 106.604 103.65 106.511 104.329 107.003C105.863 108.118 106.826 109.745 108.216 110.974C108.502 111.226 108.635 111.698 108.734 112.096C109.319 114.438 110.487 116.562 111.284 118.828C111.683 119.963 111.933 120.891 111.585 122.042C111.186 123.364 111.68 124.358 112.896 124.951C113.51 125.251 114.176 125.16 114.362 124.486C114.801 122.905 115.303 121.315 115.866 119.809C116.522 118.05 115.808 116.189 116.704 114.546C116.85 114.276 116.653 113.984 116.593 113.698C116.504 113.29 116.252 112.803 116.943 112.581C117.236 112.487 117.344 112.104 117.299 111.824C116.956 109.793 118.018 107.795 117.334 105.721C117.082 104.957 117.718 104.081 118.323 103.521C118.904 102.981 119.421 102.423 119.905 101.798C121.21 100.112 123.097 100.615 124.785 100.763C126.992 100.958 127.976 102.638 128.662 104.51C128.743 104.729 128.748 105.055 128.645 105.254C127.577 107.278 127.979 109.599 127.338 111.67C126.712 113.693 126.202 115.722 125.738 117.783C125.506 118.807 125.41 119.935 125.092 120.795C124.656 121.981 124.757 123.071 124.603 124.204C124.507 124.913 123.748 125.286 123.503 126.073C123.18 127.113 123.904 128.059 123.427 129.01C123.319 129.225 123.374 129.578 123.218 129.704C121.638 131.013 121.434 133.009 120.685 134.727C120.458 135.247 120.15 135.719 120.069 136.344C119.943 137.331 118.719 136.877 118.19 137.482C118.018 137.676 117.614 137.719 117.36 137.969C116.817 138.504 116.262 138.711 115.379 138.564C114.198 138.37 112.942 138.607 111.723 138.711C111.423 138.736 111.138 138.817 110.878 138.648C109.634 137.828 108.007 137.472 107.578 135.688C107.344 134.717 106.574 133.963 106.011 133.178C105.398 132.323 105.494 131.311 104.942 130.471C104.155 129.267 103.637 127.92 103.92 126.409C103.94 126.295 103.907 126.101 103.832 126.053C102.489 125.231 102.86 123.465 101.841 122.453C101.528 122.143 101.374 121.666 101.175 121.252C101.036 120.959 101.029 120.541 100.585 120.553C100.095 120.566 99.694 120.967 99.7445 121.345C100.025 123.422 98.2837 124.603 97.6782 126.27C97.2897 127.34 96.6589 128.377 96.8507 129.598C96.9339 130.133 96.7498 130.587 96.4798 131.026C96.2124 131.465 95.9752 131.942 96.0888 132.454C96.4748 134.177 95.7027 135.731 95.4353 137.358C95.2385 138.569 95.4101 139.859 94.6709 140.961C94.6028 141.065 94.6633 141.304 94.7365 141.443C95.3268 142.53 95.0821 143.535 94.6507 144.635C94.0679 146.123 93.9165 147.723 92.9704 149.146C91.719 151.035 90.3869 152.446 87.7681 152.057Z" fill="white" />
+        <path d="M133.564 5.84592C133.408 8.58582 132.121 11.1592 130.186 13.4475C127.037 17.1713 123.021 19.8482 119.073 22.6082C117.597 23.6401 116.128 24.6846 114.703 25.7821C114.191 26.1757 113.951 26.3018 113.421 25.7316C111.461 23.625 109.155 21.9195 106.791 20.2897C104.162 18.4757 102.6 15.7913 100.966 13.1447C99.7949 11.2525 99.4846 9.13077 99.1692 7.04683C98.7075 3.98905 102.05 -0.0400659 105.078 0.000300929C107.46 0.033099 109.763 0.694105 111.867 1.98837C113.638 3.07827 115.049 4.53904 116.454 6.00991C117.193 6.78445 117.556 6.63812 118.205 5.89133C119.976 3.85281 121.949 2.05649 124.515 0.996857C126.424 0.207181 128.367 -0.042589 130.365 0.368648C132.124 0.729426 133.562 3.13882 133.564 5.84592Z" fill="#050505" />
+        <path d="M92.8594 205.576C91.3305 205.5 89.8016 205.689 88.2677 205.213C86.7842 204.753 85.6262 203.921 84.723 202.735C84.2133 202.066 83.9156 202.137 83.3707 202.667C81.3094 204.67 78.9631 206.371 76.1879 207.064C73.5489 207.723 70.7964 208.192 68.0288 207.486C67.4687 207.342 66.8632 207.357 66.2753 207.339C62.7079 207.233 60.576 204.075 60.0942 201.188C59.6199 198.343 59.6728 195.514 60.5054 192.747C61.2345 190.325 62.3118 188.047 63.6919 185.922C65.4276 183.25 67.5772 180.965 70.5719 179.764C73.3294 178.659 76.2257 178.24 79.2381 178.671C80.54 178.858 81.8292 178.805 83.02 179.577C84.8012 180.73 85.7952 182.408 86.3276 184.345C86.5193 185.039 86.7691 185.064 87.3014 185.082C88.7874 185.138 90.286 184.878 91.7443 185.516C92.6702 185.922 93.089 186.692 92.9477 187.449C92.4986 189.861 92.0344 192.27 91.6333 194.692C91.2977 196.705 91.1791 198.683 91.8729 200.633C92.1807 201.501 92.6475 201.312 93.48 201.108C96.4798 200.371 99.0229 198.789 101.558 197.175C102.749 196.415 103.763 195.421 104.644 194.278C105.852 192.706 107.919 192.706 108.799 194.172C109.385 195.146 108.719 195.87 108.242 196.488C106.703 198.486 104.7 199.993 102.679 201.479C100.902 202.785 99.1339 204.062 97.0121 204.791C95.6523 205.26 94.3151 205.669 92.8594 205.576ZM90.9142 203.757C92.3397 203.832 93.8005 203.926 95.1679 203.578C97.4284 203 99.414 201.779 101.253 200.351C101.503 200.157 102.088 200.03 101.778 199.551C101.521 199.155 101.119 199.581 100.908 199.702C98.4906 201.077 96.0459 202.316 93.3135 203.033C92.1479 203.338 91.4895 203.066 90.8915 202.283C89.2895 200.189 89.4408 197.76 89.7663 195.358C90.1019 192.888 90.5711 190.436 91.0076 187.978C91.1539 187.148 90.8764 186.841 90.0236 186.871C88.5982 186.921 87.1677 186.866 85.7397 186.894C85.0282 186.909 84.6725 186.74 84.675 185.91C84.6775 185.269 84.6649 184.598 84.337 183.957C83.6331 182.587 82.9266 181.154 81.3044 180.798C79.7957 180.465 78.2441 179.882 76.695 180.215C75.87 180.392 75.0475 180.415 74.2377 180.564C72.2925 180.924 70.4432 181.54 68.8689 182.819C66.8808 184.436 65.3292 186.404 64.1485 188.66C63.0359 190.786 62.2664 193.009 61.7971 195.401C61.4742 197.041 61.8501 198.539 61.835 200.096C61.8224 201.34 62.1932 202.412 62.7887 203.373C63.4471 204.435 64.3806 205.324 65.743 205.515C66.7295 205.654 67.7109 205.853 68.6999 205.921C71.243 206.093 73.7886 206.063 76.2131 205.157C79.498 203.931 82.1622 201.86 84.2234 199.014C84.3319 198.862 84.5489 198.721 84.728 198.703C85.0005 198.676 84.9828 198.958 85.0409 199.147C86.1484 202.654 87.2282 203.497 90.9142 203.757Z" fill="#050505" />
+        <path d="M149.32 78.6954C148.414 78.6802 147.864 78.7029 147.355 78.4633C147.125 78.3548 146.681 78.486 146.764 78.0066C146.825 77.6584 147.125 77.5373 147.435 77.5626C148.672 77.661 149.845 77.3481 151.028 77.0731C154.035 76.3743 156.573 74.8757 158.582 72.5445C159.457 71.5303 159.263 70.6775 158.362 69.7516C157.338 68.6995 155.895 68.5053 154.724 67.7862C152.453 66.3911 149.782 65.9874 147.461 64.7512C145.432 63.6688 145.626 62.367 147.208 61.1333C149.691 59.1982 152.549 57.851 155.443 56.6601C157.996 55.6081 160.671 54.9092 163.476 54.8361C164.215 54.8159 164.879 55.0783 165.558 55.2423C166.052 55.3634 166.395 55.8326 166.337 56.476C166.279 57.1344 166.456 57.9241 165.782 58.2874C165.149 58.6255 164.662 58.2193 164.558 57.5356C164.468 56.9276 164.306 57.0815 163.96 57.364C161.682 59.2386 159.381 61.0803 157.108 62.9599C156.488 63.4746 156.288 63.9463 157.3 64.3677C159.588 65.3264 161.945 66.1564 164.039 67.5264C165.366 68.3943 166.758 69.2495 166.948 71.0534C167.049 72.0172 166.766 72.7942 165.938 73.4477C163.032 75.736 159.661 76.9192 156.15 77.888C153.773 78.5389 151.318 78.1176 149.32 78.6954Z" fill="#050505" />
+        <path d="M134.427 81.1149C133.355 81.1831 131.982 81.1225 130.673 80.6305C129.187 80.073 128.289 78.9225 127.764 77.4845C126.778 74.79 127.615 72.1283 127.968 69.4565C128.228 67.471 129.457 66.0632 130.64 64.5822C132.414 62.3595 133.776 59.8341 135.747 57.74C136.42 57.026 137.132 56.9125 137.861 57.127C138.58 57.3389 138.575 58.126 138.625 58.8148C138.83 61.6052 138.968 64.398 139.299 67.1808C139.425 68.2329 138.825 69.406 138.428 70.4783C137.709 72.4285 137.392 74.4746 136.882 76.4728C136.804 76.7755 136.806 77.2498 136.985 77.4315C137.253 77.704 137.545 77.3255 137.836 77.1817C139.334 76.4274 140.714 75.5166 141.961 74.3913C142.453 73.9473 142.897 73.4982 143.146 72.8751C143.454 72.1131 144.13 72.2998 144.62 72.4764C145.452 72.7741 144.64 73.1375 144.521 73.3948C143.732 75.0978 143.086 76.8562 141.819 78.3322C140.222 80.1966 138.295 81.1326 135.868 81.1124C135.494 81.1124 135.116 81.1149 134.427 81.1149Z" fill="#050505" />
+        <path d="M174.34 240.163C172.541 238.634 170.843 237.274 169.367 235.606C167.495 233.487 165.005 232.061 162.702 230.439C160.63 228.981 158.652 227.404 157.244 225.25C155.645 222.8 154.164 220.242 154.288 217.214C154.376 215.082 155.355 213.225 157.101 211.876C160.799 209.015 164.909 208.979 169.12 210.309C172.21 211.285 174.36 213.344 175.553 216.445C176.035 217.698 175.235 218.45 174.774 219.225C174.12 220.322 174.375 221.067 175.109 221.854C176.906 223.784 176.873 223.743 175.034 225.557C174.345 226.239 173.028 226.65 173.058 227.583C173.081 228.36 174.035 229.117 174.592 229.869C175.992 231.761 175.954 231.988 173.976 233.277C172.248 234.403 172.193 234.625 173.184 236.482C174.471 238.896 174.471 238.896 174.34 240.163ZM163.305 212.496C162.815 212.332 162.505 212.582 162.189 212.632C161.016 212.822 160.267 213.705 159.296 214.202C158.074 214.83 156.919 218.317 157.353 219.492C158.324 222.121 159.946 224.266 162.104 226.037C164.869 228.31 167.629 230.586 170.338 232.924C170.709 233.242 170.674 233.108 170.931 232.894C172.818 231.325 172.831 231.335 171.577 229.276C171.428 229.031 171.234 228.814 171.085 228.572C169.829 226.539 169.877 226.572 171.716 225.091C173.527 223.63 174.002 224.051 172.304 221.579C171.017 219.704 171.068 219.729 172.385 217.797C172.702 217.328 173.467 216.684 173.005 216.122C171.794 214.636 170.48 213.074 168.439 212.837C166.708 212.637 164.99 211.868 163.305 212.496Z" fill="#050505" />
+        <path d="M177.756 247.799C177.604 246.127 176.815 244.732 176.098 243.324C175.634 242.411 175.821 241.765 176.691 241.396C177.478 241.063 177.945 240.357 178.662 239.943C179.219 239.62 179.141 239.04 178.788 238.523C178.215 237.68 177.763 236.719 177.057 236.012C176.308 235.263 176.59 234.882 177.226 234.38C178.147 233.651 179.053 232.899 179.953 232.142C180.412 231.756 180.718 231.363 180.032 230.85C179.757 230.646 179.63 230.245 179.413 229.952C177.849 227.843 177.71 227.432 179.656 225.709C181.106 224.425 182.143 222.737 183.927 221.75C185.511 220.875 187.086 219.732 188.837 219.717C190.938 219.699 193.062 219.903 194.801 221.76C196.9 224.001 198.207 226.329 198.131 229.46C198.068 232.039 196.887 233.992 195.005 235.488C192.679 237.337 190.085 238.853 187.779 240.725C184.706 243.223 181.129 244.991 178.157 247.613C178.071 247.691 177.945 247.714 177.756 247.799ZM195.855 227.876C195.737 226.332 194.881 225.081 193.887 224.001C192.386 222.373 190.522 222.293 188.37 222.719C185.476 223.294 183.354 224.874 181.512 226.98C181.079 227.477 180.811 228.176 181.611 228.764C181.959 229.019 182.224 229.425 182.441 229.811C182.882 230.598 183.548 231.484 182.845 232.336C182.047 233.303 181.137 234.274 180.072 234.892C179.207 235.394 179.368 235.705 179.759 236.3C180.347 237.193 180.872 238.127 181.495 238.989C181.876 239.514 181.919 240.238 181.502 240.392C180.41 240.796 179.905 241.903 178.808 242.305C177.975 242.61 178.765 243.15 178.921 243.576C179.05 243.927 178.99 244.26 179.613 243.816C181.298 242.617 182.956 241.379 184.651 240.2C186.927 238.616 189.303 237.175 191.496 235.475C192.505 234.693 193.431 233.807 194.41 232.99C196.052 231.615 196.05 229.793 195.855 227.876Z" fill="#050505" />
+        <path d="M57.6949 63.0205C56.6504 63.2602 56.3476 62.3116 56.0474 61.696C55.4595 60.49 55.0483 59.1958 54.304 58.063C54.1754 57.8687 54.1022 57.6946 54.2233 57.4928C55.2829 55.7242 58.651 53.2795 61.0377 53.8976C62.4632 54.266 63.8659 55.863 64.146 57.3565C64.2393 57.851 63.8962 58.1033 63.6767 58.2875C62.0343 59.6448 60.6845 61.3175 58.9488 62.5765C58.5527 62.8616 58.207 63.0558 57.6949 63.0205Z" fill="#050505" />
+        <path d="M138.368 49.8054C137.25 49.9315 137.18 48.7962 136.476 48.4682C136.097 48.2916 135.815 47.8753 135.542 47.5246C135.171 47.0503 134.223 46.8737 134.591 46.0084C134.997 45.0572 135.298 44.1464 136.614 43.7756C138.57 43.2256 140.379 43.1348 142.291 43.826C143.038 44.096 143.452 44.6006 143.502 45.2187C143.555 45.8646 143.631 46.629 142.806 47.1033C141.511 47.8476 140.273 48.6978 139.054 49.5632C138.782 49.7574 138.534 49.76 138.368 49.8054Z" fill="#050505" />
+        <path d="M172.831 162.232C176.749 161.034 178.657 163.582 178.982 166.597C179.58 172.132 177.327 176.782 174.095 181.058C173.073 182.408 172.039 183.748 170.664 184.789C169.965 185.317 169.705 185.153 169.433 184.373C168.444 181.53 168.777 178.644 169.221 175.798C169.867 171.67 170.944 167.636 172.682 163.811C172.932 163.259 173.104 162.474 174.037 163.007C174.204 163.102 174.36 163.034 174.373 162.81C174.38 162.641 174.363 162.494 174.13 162.467C173.81 162.424 173.492 162.353 172.831 162.232ZM177.183 168.65C177.183 167.853 177.198 167.053 177.178 166.256C177.163 165.656 176.838 165.116 176.474 164.722C176.111 164.329 175.785 165 175.399 165.073C175.195 165.113 174.976 165.141 174.774 165.111C174.067 165.002 173.843 165.444 173.643 165.996C173.005 167.767 172.46 169.566 171.968 171.385C171.163 174.367 170.724 177.4 170.457 180.468C170.432 180.758 170.414 181.078 170.507 181.343C170.671 181.815 170.843 182.191 171.431 181.583C172.142 180.846 172.707 180.019 173.28 179.191C175.475 176.01 177.226 172.652 177.183 168.65Z" fill="#050505" />
+        <path d="M71.0361 197.613C71.6542 192.399 72.8551 187.363 76.0845 183.054C77.4469 181.235 78.0473 181.169 79.9546 182.355C81.6173 183.389 82.9039 184.815 83.9434 186.472C84.3168 187.068 84.3218 187.749 84.0216 188.274C81.1051 193.365 77.5402 197.939 72.9964 201.691C72.6684 201.963 72.3405 202.591 71.7577 202.271C71.2783 202.008 71.4801 201.443 71.4272 201.002C71.2934 199.882 71.1673 198.761 71.0361 197.613ZM72.7719 197.432C72.898 198.037 72.5524 198.809 72.9737 199.031C73.5388 199.329 73.8214 198.539 74.1872 198.186C76.8186 195.651 79.1221 192.863 81.042 189.737C82.4372 187.466 82.3237 186.26 80.1741 184.656C79.9067 184.456 79.5661 184.333 79.3491 184.093C78.5696 183.238 77.9741 183.525 77.3459 184.29C76.145 185.758 75.4083 187.471 74.765 189.217C73.776 191.902 73.0746 194.662 72.7719 197.432Z" fill="#050505" />
+      </svg>
+    </div>
+    <div id="page" class="page">
+      <div data-barba="container" data-barba-namespace="home">
+        <div class="hero-section">
+          <div class="hero-section-image">
+            <img src="img/main.png" alt="" class="hero-section-image__img">
+          </div>
+        </div>
+        <div class="main" id="main">
+          <div class="container">
+            <div class="row comic">
+              <aside class="d-none d-lg-block col-lg-2">
+                <div class="content-substrate widget">
+                  <p class="widget__title">Follow us</p>
+                  <div class="social-networks-column">
+                    <div class="row social-networks-column">
+                      <div class="col-lg-6 social-networks-column__item">
+                        <a href="#" class="square-btn square-btn_darken" title="">
+                          <svg class="icon icon-deviantart square-btn__icon">
+                            <use xlink:href="#deviantart" />
+                          </svg></a>
+                      </div>
+                      <div class="col-lg-6 social-networks-column__item">
+                        <a href="#" class="square-btn square-btn_darken" title="">
+                          <svg class="icon icon-twitter square-btn__icon">
+                            <use xlink:href="#twitter" />
+                          </svg></a>
+                      </div>
+                      <div class="col-lg-6 social-networks-column__item">
+                        <a href="#" class="square-btn square-btn_darken" title="">
+                          <svg class="icon icon-facebook square-btn__icon">
+                            <use xlink:href="#facebook" />
+                          </svg></a>
+                      </div>
+                      <div class="col-lg-6 social-networks-column__item">
+                        <a href="#" class="square-btn square-btn_darken" title="">
+                          <svg class="icon icon-feed square-btn__icon">
+                            <use xlink:href="#feed" />
+                          </svg></a>
+                      </div>
+                      <div class="col-lg-6 social-networks-column__item">
+                        <a href="#" class="square-btn square-btn_darken" title="">
+                          <svg class="icon icon-instagram square-btn__icon">
+                            <use xlink:href="#instagram" />
+                          </svg></a>
+                      </div>
+                      <div class="col-lg-6 social-networks-column__item">
+                        <a href="#" class="square-btn square-btn_darken" title="">
+                          <svg class="icon icon-tumblr square-btn__icon">
+                            <use xlink:href="#tumblr" />
+                          </svg></a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </aside>
+              <main class="col-lg-8">
+                <div class="content-substrate chapter-header {{className}}">
+                  <h3 class="chapter-header__title">112. Name of chapter</h3>
+                  <nav class="comic-nav">
+                    <a href="https://magicdvlp.github.io/chapter.html" class="square-btn comic-nav__btn barba-link" title="First">
+                      <svg class="icon icon-first-page square-btn__icon">
+                        <use xlink:href="#first-page" />
+                      </svg></a> <a href="https://magicdvlp.github.io/chapter.html" class="square-btn comic-nav__btn barba-link" title="Previous">
+                      <svg class="icon icon-prev-page square-btn__icon">
+                        <use xlink:href="#prev-page" />
+                      </svg></a> <a href="#" class="square-btn comic-nav__btn open-side-menu" title="">
+                      <svg class="icon icon-hamburger square-btn__icon">
+                        <use xlink:href="#hamburger" />
+                      </svg></a> <a href="https://magicdvlp.github.io/" class="square-btn square-btn_disabled comic-nav__btn barba-link" title="Next">
+                      <svg class="icon icon-next-page square-btn__icon">
+                        <use xlink:href="#next-page" />
+                      </svg></a> <a href="https://magicdvlp.github.io/" class="square-btn square-btn_disabled comic-nav__btn barba-link" title="Last">
+                      <svg class="icon icon-last-page square-btn__icon">
+                        <use xlink:href="#last-page" />
+                      </svg></a>
+                  </nav>
+                  <div class="theme-select-row site-theme-select d-block d-lg-none">
+                    <div class="theme-select-row__inner row">
+                      <div class="col-auto">
+                        <p class="theme-select-row__title">Bg color</p>
+                      </div>
+                      <div class="col-auto theme-select-row__color-list flex-grow-1">
+                        <span data-theme="default" class="theme-select-row__color site-theme-select-option" style="color:#fff"></span>
+                        <span data-theme="dark" class="theme-select-row__color site-theme-select-option" style="color:#4c4c4c"></span>
+                        <span data-theme="pink" class="theme-select-row__color site-theme-select-option" style="color:#fe7a79"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chapter-content">
+                  <img src="img/chapter-1.jpg" alt="image" class="chapter-content__img">
+                </div>
+                <div class="content-substrate content-substrate_rounded-bottom chapter-header {{className}}">
+                  <h3 class="chapter-header__title">112. Name of chapter</h3>
+                  <nav class="comic-nav">
+                    <a href="https://magicdvlp.github.io/chapter.html" class="square-btn comic-nav__btn barba-link" title="First">
+                      <svg class="icon icon-first-page square-btn__icon">
+                        <use xlink:href="#first-page" />
+                      </svg></a> <a href="https://magicdvlp.github.io/chapter.html" class="square-btn comic-nav__btn barba-link" title="Previous">
+                      <svg class="icon icon-prev-page square-btn__icon">
+                        <use xlink:href="#prev-page" />
+                      </svg></a> <a href="#" class="square-btn comic-nav__btn open-side-menu" title="">
+                      <svg class="icon icon-hamburger square-btn__icon">
+                        <use xlink:href="#hamburger" />
+                      </svg></a> <a href="https://magicdvlp.github.io/" class="square-btn square-btn_disabled comic-nav__btn barba-link" title="Next">
+                      <svg class="icon icon-next-page square-btn__icon">
+                        <use xlink:href="#next-page" />
+                      </svg></a> <a href="https://magicdvlp.github.io/" class="square-btn square-btn_disabled comic-nav__btn barba-link" title="Last">
+                      <svg class="icon icon-last-page square-btn__icon">
+                        <use xlink:href="#last-page" />
+                      </svg></a>
+                  </nav>
+                  <div class="theme-select-row site-theme-select d-block d-lg-none">
+                    <div class="theme-select-row__inner row">
+                      <div class="col-auto">
+                        <p class="theme-select-row__title">Bg color</p>
+                      </div>
+                      <div class="col-auto theme-select-row__color-list flex-grow-1">
+                        <span data-theme="default" class="theme-select-row__color site-theme-select-option" style="color:#fff"></span>
+                        <span data-theme="dark" class="theme-select-row__color site-theme-select-option" style="color:#4c4c4c"></span>
+                        <span data-theme="pink" class="theme-select-row__color site-theme-select-option" style="color:#fe7a79"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </main>
+              <aside class="col-lg-2 d-none d-lg-block col-lg-2">
+                <div class="content-substrate widget">
+                  <p class="widget__title">Bg color</p>
+                  <div class="theme-select site-theme-select">
+                    <span data-theme="default" class="theme-select__color site-theme-select-option" style="color:#fff"></span>
+                    <span data-theme="dark" class="theme-select__color site-theme-select-option" style="color:#4c4c4c"></span>
+                    <span data-theme="pink" class="theme-select__color site-theme-select-option" style="color:#fe7a79"></span>
+                  </div>
+
+                </div>
+              </aside>
+            </div>
+            <div class="content-substrate comments" id="comments">
+              <h1>Comments</h1>
+
+            </div>
+          </div>
+          <div class="footer">
+            <div class="container">
+              <div class="subscribe-block">
+                <h3 class="section-title">E-mail Newsletter</h3>
+                <div class="text-field text-field_accent-ff subscribe-block__desc">
+                  <p style="text-align:center"><strong>Sign up for the e-mail newsletter to get notifications like comic updates, books and print releases, events and upgrades. :D</strong></p>
+
+                </div>
+                <form class="form subscribe-form">
+                  <div class="subscribe-form-field">
+                    <input type="email" class="subscribe-form-field__input subscribe-form-field__input_email" name="email" placeholder="Your email" required autocomplete="off">
+                    <svg class="icon icon-email subscribe-form-field__icon">
+                      <use xlink:href="#email" />
+                    </svg>
+                  </div>
+                  <button class="button subscribe-form__btn">Send</button>
+                </form>
+              </div>
+              <div class="social-networks-block">
+                <h3 class="section-title">Follow us</h3>
+                <div class="row align-items-center justify-content-center g-4 g-md-5">
+                  <div class="col-auto social-networks-row__item">
+                    <a href="#" class="square-btn" title="">
+                      <svg class="icon icon-deviantart square-btn__icon">
+                        <use xlink:href="#deviantart" />
+                      </svg></a>
+                  </div>
+                  <div class="col-auto social-networks-row__item">
+                    <a href="#" class="square-btn" title="">
+                      <svg class="icon icon-twitter square-btn__icon">
+                        <use xlink:href="#twitter" />
+                      </svg></a>
+                  </div>
+                  <div class="col-auto social-networks-row__item">
+                    <a href="#" class="square-btn" title="">
+                      <svg class="icon icon-facebook square-btn__icon">
+                        <use xlink:href="#facebook" />
+                      </svg></a>
+                  </div>
+                  <div class="col-auto social-networks-row__item">
+                    <a href="#" class="square-btn" title="">
+                      <svg class="icon icon-feed square-btn__icon">
+                        <use xlink:href="#feed" />
+                      </svg></a>
+                  </div>
+                  <div class="col-auto social-networks-row__item">
+                    <a href="#" class="square-btn" title="">
+                      <svg class="icon icon-instagram square-btn__icon">
+                        <use xlink:href="#instagram" />
+                      </svg></a>
+                  </div>
+                  <div class="col-auto social-networks-row__item">
+                    <a href="#" class="square-btn" title="">
+                      <svg class="icon icon-tumblr square-btn__icon">
+                        <use xlink:href="#tumblr" />
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+              <nav class="nav-menu nav-menu_bottom footer__nav-menu">
+                <a href="https://magicdvlp.github.io/" class="nav-menu__item nav-menu__item_active">Home</a>
+                <a href="https://magicdvlp.github.io/about.html" class="nav-menu__item">About</a>
+                <span class="nav-menu__line"></span>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="footer-substrate">
+          <div class="footer-substrate__spot-1"></div>
+          <div class="footer-substrate__spot-2"></div>
+        </div>
+        <div class="body-noise"></div>
+      </div>
+      <div class="characters-overlay d-none d-lg-flex">
+        <div class="characters-overlay__inner">
+          <img src="img/character-left.png" width="320" height="692" alt="image" class="characters-overlay__img characters-overlay__img_left" loading="lazy">
+          <img src="img/character-right.png" width="320" height="704" alt="image" class="characters-overlay__img characters-overlay__img_right" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <nav id="menu" class="side-menu">
+      <header class="side-menu-header">
+        <div class="side-menu-header__title">Episode list</div>
+        <div class="side-menu-header__close close-side-menu">&#10006;</div>
+      </header>
+      <ul class="chapter-list">
+        <li class="chapter-list-item">
+          <a href="https://magicdvlp.github.io/" class="chapter-list-item__link barba-link">
+            <span class="chapter-list-item__thumb">
+		            <img src="img/thumb.jpg" alt="image" class="chapter-list-item__thumb-img">
+		          </span>
+            <span class="chapter-list-item__title">112. Name of chapter</span>
+          </a>
+        </li>
+        <li class="chapter-list-item">
+          <a href="https://magicdvlp.github.io/chapter.html" class="chapter-list-item__link barba-link">
+            <span class="chapter-list-item__thumb">
+		            <img src="img/thumb.jpg" alt="image" class="chapter-list-item__thumb-img">
+		          </span>
+            <span class="chapter-list-item__title">111. Name of chapter</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="comic-nav-floating mm-slideout">
+      <div class="container comic-nav-floating__container">
+        <div class="row justify-content-between">
+          <div class="col-lg-2 col-sm-1 col-auto flex-column d-flex align-items-end">
+            <a href="" class="square-btn comic-nav-floating__btn open-side-menu" title="">
+              <svg class="icon icon-hamburger square-btn__icon">
+                <use xlink:href="#hamburger" />
+              </svg></a> <a href="https://magicdvlp.github.io/chapter.html" class="square-btn comic-nav-floating__btn barba-link" title="">
+              <svg class="icon icon-prev-page square-btn__icon">
+                <use xlink:href="#prev-page" />
+              </svg></a> <a href="https://magicdvlp.github.io/chapter.html" class="square-btn comic-nav-floating__btn barba-link" title="">
+              <svg class="icon icon-first-page square-btn__icon">
+                <use xlink:href="#first-page" />
+              </svg></a> <a href="#" class="square-btn comic-nav-floating__btn" title="">
+              <svg class="icon icon-topIcon square-btn__icon">
+                <use xlink:href="#topIcon" />
+              </svg></a>
+          </div>
+          <div class="col-lg-2 col-sm-1 col-auto flex-column d-flex">
+            <a href="#comments" class="square-btn comic-nav-floating__btn" title="">
+              <svg class="icon icon-message square-btn__icon">
+                <use xlink:href="#message" />
+              </svg></a> <a href="https://magicdvlp.github.io/" class="square-btn square-btn_disabled comic-nav-floating__btn barba-link" title="">
+              <svg class="icon icon-next-page square-btn__icon">
+                <use xlink:href="#next-page" />
+              </svg></a> <a href="https://magicdvlp.github.io/" class="square-btn square-btn_disabled comic-nav-floating__btn barba-link" title="">
+              <svg class="icon icon-last-page square-btn__icon">
+                <use xlink:href="#last-page" />
+              </svg></a>
+          </div>
+        </div>
+      </div>
+    </div> <!-- submit modal message start -->
+    <div id="submit-modal-success" aria-hidden="true" class="modal micromodal-slide submit-modal Fixed">
+      <div data-micromodal-close="" class="modal__overlay submit-modal__overlay">
+        <button class="submit-modal__close-btn" data-micromodal-close=""></button>
+        <div class="modal__container submit-modal__container">
+          <div class="modal__content submit-modal__content">
+            <p>Great!</p>
+            <p>We will add your email to the mailing list</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="submit-modal-error" aria-hidden="true" class="modal micromodal-slide submit-modal Fixed">
+      <div data-micromodal-close="" class="modal__overlay submit-modal__overlay">
+        <button class="submit-modal__close-btn" data-micromodal-close=""></button>
+        <div class="modal__container submit-modal__container">
+          <div class="modal__content submit-modal__content">
+            <p>Error!</p>
+            <p>Try again later!</p>
+
+          </div>
+        </div>
+      </div>
+    </div> <!-- submit modal message end -->
+
+    <script defer="defer" src="js/libs.js"></script>
+    <script defer="defer" src="js/common.js"></script>
+  </body>
+
+</html>
